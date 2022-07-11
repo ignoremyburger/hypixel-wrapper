@@ -70,6 +70,7 @@ class HypixelWrapper:
             data = self.get_player_data()['achievements']
             detailed = self.get_player_data()['stats']['Bedwars']
             json_string = {
+                "status": "success",
                 "game_mode": "Bedwars",
                 "level": data['bedwars_level'],
                 "total_games_played": detailed['games_played_bedwars_1'],
@@ -77,7 +78,7 @@ class HypixelWrapper:
                     {
                         "mode": "solo",
                         "winstreak": detailed['eight_one_winstreak'],
-                        "loses": detailed['eight_one_losses_bedwars'],
+                        "losses": detailed['eight_one_losses_bedwars'],
                         #Hypixel doesn't count solo wins in the API
                         "wins": detailed['eight_one_games_played_bedwars'] - detailed['eight_one_losses_bedwars'],
                         "beds_broken": detailed['eight_one_beds_broken_bedwars'],
@@ -86,7 +87,7 @@ class HypixelWrapper:
                     {
                         "mode": "doubles",
                         "winstreak": detailed['eight_two_winstreak'],
-                        "loses": detailed['eight_two_losses_bedwars'],
+                        "losses": detailed['eight_two_losses_bedwars'],
                         "wins": detailed['eight_two_wins_bedwars'],
                         "beds_broken": detailed['eight_two_beds_broken_bedwars'],
                         "total_kills": detailed['eight_two_kills_bedwars']
@@ -94,7 +95,7 @@ class HypixelWrapper:
                     {
                         "mode": "3v3v3v3",
                         "winstreak": detailed['four_three_winstreak'],
-                        "loses": detailed['four_three_losses_bedwars'],
+                        "losses": detailed['four_three_losses_bedwars'],
                         "wins": detailed['four_three_wins_bedwars'],
                         "beds_broken": detailed['four_three_beds_broken_bedwars'],
                         "total_kills": detailed['four_three_kills_bedwars']
@@ -102,7 +103,7 @@ class HypixelWrapper:
                     {
                         "mode": "4v4v4v4",
                         "winstreak": detailed['four_four_winstreak'],
-                        "loses": detailed['four_four_losses_bedwars'],
+                        "losses": detailed['four_four_losses_bedwars'],
                         "wins": detailed['four_four_wins_bedwars'],
                         "beds_broken": detailed['four_four_beds_broken_bedwars'],
                         "total_kills": detailed['four_four_kills_bedwars']
@@ -148,7 +149,7 @@ class HypixelWrapper:
                 "total_games_played": detailed['games_played_duels'],
                 "highest_winstreak": data['duels_duels_win_streak'],
                 "wins": detailed['wins'],
-                "loses": detailed['losses'],
+                "losses": detailed['losses'],
                 "current_winstreak": detailed['current_winstreak'],
                 "total_kills": detailed['kills'],
                 "coins": detailed['coins']

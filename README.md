@@ -48,7 +48,7 @@ print(bw_stat)
 returns
 
 ```
-{'game_mode': 'Bedwars', 'level': 145, 'total_games_played': 4100, 'details': [{'mode': 'solo', 'winstreak': 0, 'loses': 1160, 'wins': 176, 'beds_broken': 1509, 'total_kills': 2143}, {'mode': 'doubles', 'winstreak': 0, 'loses': 619, 'wins': 33, 'beds_broken': 254, 'total_kills': 1222}, {'mode': '3v3v3v3', 'winstreak': 0, 'loses': 232, 'wins': 27, 'beds_broken': 53, 'total_kills': 631}, {'mode': '4v4v4v4', 'winstreak': 0, 'loses': 1291, 'wins': 218, 'beds_broken': 375, 'total_kills': 4003}], 'beds_destroyed': 2218, 'wins': 486}
+{'status': 'success', 'game_mode': 'Bedwars', 'level': 145, 'total_games_played': 4100, 'details': [{'mode': 'solo', 'winstreak': 0, 'loses': 1160, 'wins': 176, 'beds_broken': 1509, 'total_kills': 2143}, {'mode': 'doubles', 'winstreak': 0, 'loses': 619, 'wins': 33, 'beds_broken': 254, 'total_kills': 1222}, {'mode': '3v3v3v3', 'winstreak': 0, 'loses': 232, 'wins': 27, 'beds_broken': 53, 'total_kills': 631}, {'mode': '4v4v4v4', 'winstreak': 0, 'loses': 1291, 'wins': 218, 'beds_broken': 375, 'total_kills': 4003}], 'beds_destroyed': 2218, 'wins': 486}
 ```
 
 <h3>Skywars | skywars_stat()</h3>
@@ -67,7 +67,27 @@ print(sw_stat)
 returns
 
 ```
-{'game_mode': 'Skywars', 'level': 9, 'cages_owned': 12, 'skywars_wins_solo': 135, 'skywars_kills_solo': 2493, 'skywars_kits_solo': 37, 'skywars_wins_team': 38, 'skywars_kills_team': 435, 'skywars_kits_team': 37}
+{'status': 'success', 'game_mode': 'Skywars', 'level': 9, 'cages_owned': 12, 'skywars_wins_solo': 135, 'skywars_kills_solo': 2493, 'skywars_kits_solo': 37, 'skywars_wins_team': 38, 'skywars_kills_team': 435, 'skywars_kits_team': 37}
+```
+
+
+<h3>Duels | duels_stat()</h3>
+The Duels module returns a JSON string that contains the player's total games played, highest winstreak, wins, losses, current winstreak, total kills and coins.
+
+Example: 
+
+```python
+from wrapper import HypixelWrapper
+
+hw = HypixelWrapper("My API Key", "_Heartbr0ken_")
+duels_stat = hw.duels_stat()
+print(duels_stat)
+```
+
+returns
+
+```
+{'status': 'success', 'game_mode': 'Duels', 'total_games_played': 2616, 'highest_winstreak': 10, 'wins': 834, 'loses': 1213, 'current_winstreak': 1, 'total_kills': 708, 'coins': 32242}
 ```
 
 <h2>Further remarks</h2>
