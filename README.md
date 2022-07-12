@@ -3,12 +3,12 @@ HAW is writen to simplify the process of gathering data from Hypixel
 
 <h2>Installation</h2>
 <b>Step 1</b>: Clone the repository. <b>[<i> git clone https://github.com/buibaohoang06/hypixel-wrapper </i>]</b><br><br>
-<b>Step 2</b>: Move <b>wrapper.py</b> to your project folder.<br><br>
+<b>Step 2</b>: Move <b>haw.py</b> to your project folder.<br><br>
 <b>Step 3</b>: Go on to Hypixel to get your API Key by using command <b>/api</b><br><br>
 <b>Step 4: Import HypixelWrapper into your code and initialize it.</b><br><br>
 
 ```python
-from wrapper import HypixelWrapper
+from haw import HypixelWrapper
 
 haw = HypixelWrapper(key="your Hypixel API Key", ign="your in-game name")
 ```
@@ -20,7 +20,7 @@ The General Information module returns a JSON string that contains the player's 
 Example: 
 
 ```python
-from wrapper import HypixelWrapper
+from haw import HypixelWrapper
 
 hw = HypixelWrapper("My API Key", "_Heartbr0ken_")
 general_stat = hw.general_stat()
@@ -38,7 +38,7 @@ The Bedwars module returns a JSON string that contains winstreak, losses, wins, 
 Example: 
 
 ```python
-from wrapper import HypixelWrapper
+from haw import HypixelWrapper
 
 hw = HypixelWrapper("My API Key", "_Heartbr0ken_")
 bw_stat = hw.bedwars_stat()
@@ -57,7 +57,7 @@ The Skywars module returns a JSON string that contains the player's skywars leve
 Example: 
 
 ```python
-from wrapper import HypixelWrapper
+from haw import HypixelWrapper
 
 hw = HypixelWrapper("My API Key", "_Heartbr0ken_")
 sw_stat = hw.skywars_stat()
@@ -77,7 +77,7 @@ The Duels module returns a JSON string that contains the player's total games pl
 Example: 
 
 ```python
-from wrapper import HypixelWrapper
+from haw import HypixelWrapper
 
 hw = HypixelWrapper("My API Key", "_Heartbr0ken_")
 duels_stat = hw.duels_stat()
