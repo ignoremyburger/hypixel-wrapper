@@ -1,8 +1,10 @@
-import urllib.request
+from urllib.request import Request, urlopen
 import json
 import sys
+from datetime import datetime as dt
 
 class HypixelWrapper:
+    uuid = ""
     username = ""
     inside_key = ""
     #Initialize by providing In-game name and API Key from Hypixel
@@ -19,7 +21,7 @@ class HypixelWrapper:
         try:
             global uuid
             global username
-            with urllib.request.urlopen(f"https://api.mojang.com/users/profiles/minecraft/{username}") as res:
+            with urlopen(f"https://api.mojang.com/users/profiles/minecraft/{username}") as res:
                 uuid = json.loads(res.read().decode())['id']
         except Exception as e:
             sys.exit("Error occured while fetching UUID, did you put in the correct username?")
@@ -29,7 +31,7 @@ class HypixelWrapper:
             global inside_key
             uuid = self.get_uuid()
             #Contact the Hypixel API with the privided key
-            with urllib.request.urlopen(f"https://api.hypixel.net/player?key={inside_key}&uuid={uuid}") as res:
+            with urlopen(f"https://api.hypixel.net/player?key={inside_key}&uuid={uuid}") as res:
                 player_data = json.loads(res.read().decode())['player']
         except Exception as e:
             sys.exit("Error occured while fetching player data, did you put in the correct username?")
@@ -159,4 +161,33 @@ class HypixelWrapper:
                 "status": "error",
                 "detail": str(e)
             }
+        return json_string
+    def skyblock_stat(self):
+        complete = 0
+        active = 0
+        global inside_key
+        uuid = self.get_uuid()
+        with urlopen(f"https://api.hypixel.net/skyblock/profile?key={inside_key}&profile={uuid}") as res:
+            data = json.loads(res.read().decode())['profile']['members'][uuid]
+        #Convert time
+        converted_time = dt.utcfromtimestamp(int(data['first_join']) / 1000).strftime('%Y-%m-%d %H:%M:%S')
+        #Counting objectives completed and still active
+        for i in range(0, len(data['objectives']) - 1):
+            try:
+                if data['objectives'][i]['status'] == "COMPLETE":
+                    complete = complete + 1
+                elif data['objectives'][i]['status'] == "ACTIVE":
+                    active = active + 1
+            except KeyError:
+                break
+        json_string = {
+            "first_join": converted_time,
+            "deaths": data['stats']['deaths'],
+            "death_by_void": data['stats']['deaths_void'],
+            "kills": data['stats']['kills'],
+            "kills_cow": data['stats']['kills_cow'],
+            "deaths_unburried_zombie": data['stats']['deaths_unburried_zombie'],
+            "objectives_completed": complete,
+            "objectives_active": active
+        }
         return json_string
