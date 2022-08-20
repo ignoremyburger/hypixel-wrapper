@@ -95,6 +95,6 @@ This project is still being developed, more modules will be added in the future.
 
 <h3>Contact Info</h3>
 <ul>
-<li>Discord: justharveyy#2605</li>
+<li>Discord: affogato#2605</li>
 <li>E-Mail: heartbroken.89@protonmail.ch</li>
 </ul>
